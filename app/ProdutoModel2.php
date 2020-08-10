@@ -9,6 +9,6 @@ class ProdutoModel extends Model
 
     protected $table = 'produtos';
     protected $fillable = [
-        'nome', 'descricao', 'preco', 'parcelamento', 'codigosistema', 'foto_um', 'foto_dois', 'foto_tres', 'id_categoria', 'disponivel','und_medida', 'id_user'
+        'nome', 'descricao', 'preco', 'parcelamento', 'codigosistema', 'foto_um', 'foto_dois', 'foto_tres', 'id_categoria','und_medida', 'id_user'
     ];
 }

@@ -1,10 +1,5 @@
 @extends('layouts.app')
 @section('content')
-    @if(strstr(\Illuminate\Support\Facades\Auth::user()->email, '@') == "@vendas.com.br")
-        <script type="text/javascript">
-            window.location.href = "{{route('adminpedidos.index')}}";
-        </script>
-    @endif
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
@@ -19,20 +14,10 @@
                         @csrf
                         <div class="row">
 
-                            <div class="col-9">
+                            <div class="col-12">
                                <label for="nome">*Nome</label>
                                <input class="form-control" maxlength="100" type="text" id="nome" name="nome" required>
                            </div>
-
-
-                            <div class="col-3">
-                                <label for="disponivel">*Disponível?</label>
-                                <select class="form-control" name="disponivel" id="disponivel" required>
-                                        <option selected value="1">Sim</option>
-                                        <option value="0">Não</option>
-                                </select>
-                            </div>
-
                            <div class="col-12">
                                <label for="descricao">Descrição</label>
                                <textarea class="form-control" id="descricao" name="descricao" rows="4"></textarea>
@@ -40,7 +25,7 @@
 
                            <div class="col-md-3 col-12">
                                <label for="preco">*Preço</label>
-                               <input class="form-control" type="text" id="preco" name="preco" required>
+                               <input class="form-control" type="number" id="preco" name="preco" required>
                            </div>
                             <div class="col-md-3 col-12">
                                 <label for="und_medida">*Unidade de Medida</label>
@@ -50,6 +35,7 @@
                                     <option value="/ unidade">Unidade</option>
                                 </select>
                             </div>
+
                                 <input class="form-control" type="hidden" value="" id="parcelamento" name="parcelamento">
                             <div class="col-md-3 col-12">
                                 <label for="codigosistema">*Cod. Solidus</label>

@@ -1,13 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
-    @if(strstr(\Illuminate\Support\Facades\Auth::user()->email, '@') == "@vendas.com.br")
-        <script type="text/javascript">
-            window.location.href = "{{route('adminpedidos.index')}}";
-        </script>
-    @endif
-
     <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">

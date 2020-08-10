@@ -1,10 +1,5 @@
 @extends('layouts.app')
 @section('content')
-    @if(strstr(\Illuminate\Support\Facades\Auth::user()->email, '@') == "@vendas.com.br")
-        <script type="text/javascript">
-            window.location.href = "{{route('adminpedidos.index')}}";
-        </script>
-    @endif
     <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
@@ -19,42 +14,23 @@
                         <input value="put" type="hidden" name="_method">
                         <div class="row">
 
-                            <div class="col-9">
+                            <div class="col-12">
                                <label for="nome">*Nome</label>
                                <input class="form-control" maxlength="100" type="text" value="{{$produto->nome}}" id="nome" name="nome" required>
                            </div>
-
-                            <div class="col-3">
-                                <label for="disponivel">*Disponível?</label>
-                                <select class="form-control" name="disponivel" id="disponivel" required>
-                                    @if($produto->disponivel==1)
-                                        <option selected value="1">Sim</option>
-                                        <option value="0">Não</option>
-                                    @else
-                                        <option selected value="0">Não</option>
-                                        <option value="1">Sim</option>
-                                    @endif
-                                </select>
-                            </div>
-
                            <div class="col-12">
                                <label for="descricao">Descrição</label>
                                <textarea class="form-control" id="descricao" name="descricao" rows="4">{{$produto->descricao}}
                                </textarea>
                            </div>
-
                            <div class="col-4">
                                <label for="preco">*Preço</label>
                                <input class="form-control" type="text" id="preco" value="{{$produto->preco}}" name="preco" required>
                            </div>
                             <div class="col-4">
                                 <label for="und_medida">*Unidade de Medida</label>
-                                <select class="form-control" onchange="selecionarcategoria()" name="und_medida" id="und_medida" required>
-                                    @if($produto->und_medida == null || $produto->und_medida == '' || $produto->und_medida == ' ')
-                                    <option></option>
-                                    @else
+                                <select class="form-control" onchange="selecionarcategoria()" name="und_medida" id="und_medida">
                                     <option value="{{ $produto->und_medida }}">Alterar Unidade?</option>
-                                    @endif
                                     <option value="/ metro">Metro</option>
                                     <option value="/ kg">Kilo</option>
                                     <option value="/ unidade">Unidade</option>
@@ -68,11 +44,9 @@
                             <div class="col-6">
                                 <label for="id_categoria">*Categoria</label>
                                 <select class="form-control" name="id_categoria" id="id_categoria" required>
-                                    <option selected value="{{$produto->id_categoria}}">{{\App\CategoriaModel::all()->where('id', $produto->id_categoria)->first()->nome}}</option>
+                                    <option  value="{{$produto->id_categoria}}">Alterar categoria?</option>
                                     @foreach(\App\CategoriaModel::all() as $categoria)
-                                        @if($categoria->id != $produto->id_categoria)
                                         <option value="{{$categoria->id}}">{{$categoria->nome}}</option>
-                                        @endif
                                     @endforeach
                                 </select>
                             </div>

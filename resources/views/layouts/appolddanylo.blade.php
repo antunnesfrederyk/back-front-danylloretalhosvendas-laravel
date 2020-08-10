@@ -4,12 +4,12 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-{{--    <link rel="shortcut icon" href="{{asset("logo.png")}}" type="image/x-icon">--}}
+    <link rel="shortcut icon" href="{{asset("logo.png")}}" type="image/x-icon">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Danyllo Retalhos</title>
+    <title>K Móveis - Gerenciamento</title>
 
     <!-- Scripts --><!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" ></script>
@@ -47,7 +47,7 @@
     </script>
 
 </head>
-<body  style="background-color: #2ac5ff">
+<body  style="background-color: #ff8600">
     <div id="app">
 
         @auth
@@ -55,7 +55,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/admin') }}">
-                   <img src="{{asset("brasao.png")}}" height="30px" class="mr-2"/>
+                   <img src="{{asset("brasao.png")}}" height="30px" class="mr-2"/>K Móveis - Gerenciamento
                 </a>
 
 

@@ -67,8 +67,8 @@ class ProdutoAdminController extends Controller
         $categoria->nome = $request['nome'];
         $categoria->descricao = $request['descricao'];
         $categoria->preco = $request['preco'];
+        $categoria->und_medida = $request['und_medida'];
         $categoria->parcelamento = $request['parcelamento'];
-        $categoria->disponivel = $request['disponivel'];
         $categoria->codigosistema = $request['codigosistema'];
         $categoria->foto_um =  'fotos/' . $newName1;
         $categoria->foto_dois =  'fotos/' . $newName2;

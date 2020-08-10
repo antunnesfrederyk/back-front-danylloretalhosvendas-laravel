@@ -1,13 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
-    @if(strstr(\Illuminate\Support\Facades\Auth::user()->email, '@') == "@vendas.com.br")
-        <script type="text/javascript">
-            window.location.href = "{{route('adminpedidos.index')}}";
-        </script>
-    @endif
-
     <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
@@ -23,7 +16,6 @@
                         <tr>
                             <td>Nome</td>
                             <td>Preço</td>
-                            <td>Estoque</td>
                             <td>Ações</td>
                         </tr>
                         </thead>
@@ -37,21 +29,17 @@
                             </td>
                             <td>
                                 R$ {{$dado->preco}}
-                            </td>
-                            <td>
-                                @if($dado->disponivel==1)
-                                    <label class="btn-sm btn-success disabled">Disponível</label>
-                                @else
-                                    <label class="btn-sm btn-danger disabled">Indisponível</label>
-                                @endif
+                                {{$dado->und_medida}}
                             </td>
                             <td align="center">
-                                    <a href="{{route("adminprodutos.edit", $dado->id)}}" class="btn btn-primary btn-sm">Editar</a>
-                                    <form id="deleteform{{$dado->id}}" action="{{route('adminprodutos.destroy', $dado->id)}}" method="POST">
-                                        @csrf
-                                        <input type="hidden" name="_method" value="DELETE">
-                                        <button type="button" onclick="pergunta({{$dado->id}})" class="btn btn-danger btn-sm mt-1">Remover</button>
-                                    </form>
+                                <div class="row" align="center">
+                                        <a href="{{route("adminprodutos.edit", $dado->id)}}" class="btn btn-primary pl-3 pr-3 pt-1 pb-1 mr-1 ml-3"><i class="fas fa-pen"></i></a>
+                                        <form id="deleteform{{$dado->id}}" action="{{route('adminprodutos.destroy', $dado->id)}}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            <button type="button" onclick="pergunta({{$dado->id}})" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                                        </form>
+                                </div>
                             </td>
                         </tr>
                         @endforeach

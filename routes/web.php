@@ -20,7 +20,6 @@ Route::get('/removecart/{idproduto}/{qtd}', 'ClienteController@removecart')->nam
 Route::get('/carrinho', 'ClienteController@carrinho')->name('carrinho');
 Route::get('/limpar', 'ClienteController@limpar')->name('limpar');
 Route::post('/enviar', 'ClienteController@enviar')->name('enviar');
-Route::post('/updateqtd', 'ClienteController@updateqtd')->name('updateqtd');
 
 Auth::routes();
 
@@ -28,6 +27,7 @@ Auth::routes();
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/admin', 'HomeController@index')->name('home');
     Route::resource('admincategorias', 'CategoriaAdminController');
+    Route::resource('adminbanners', 'BannerController');
     Route::resource('adminprodutos', 'ProdutoAdminController');
     Route::resource('adminpedidos', 'PedidosAdminController');
     Route::get('admin/usuarios', 'ClienteController@listarUsuarios')->name('usuarios');
